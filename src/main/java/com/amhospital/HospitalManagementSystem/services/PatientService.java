@@ -1,8 +1,13 @@
 package com.amhospital.HospitalManagementSystem.services;
 
-import org.springframework.stereotype.Service;
+import com.amhospital.HospitalManagementSystem.DTO.PatientDto;
 
-@Service
-public class PatientService {
+public interface PatientService {
+    PatientDto addPatient(PatientDto patientDto);
 
+    Boolean removePatient(Integer patientId);
+
+    PatientDto getPatient(Integer patientId);
+
+    PatientDto updatePatient(PatientDto patientDto);
 }
