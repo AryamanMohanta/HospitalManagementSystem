@@ -4,8 +4,8 @@ import com.amhospital.HospitalManagementSystem.Config.AppointmentMapper;
 import com.amhospital.HospitalManagementSystem.DTO.AppointmentDto;
 import com.amhospital.HospitalManagementSystem.model.Appointment;
 import com.amhospital.HospitalManagementSystem.repositories.AppointmentRepo;
-import com.amhospital.HospitalManagementSystem.repositories.DoctorRepo;
 import com.amhospital.HospitalManagementSystem.repositories.PatientRepo;
+import com.amhospital.HospitalManagementSystem.repositories.StaffRepo;
 import com.amhospital.HospitalManagementSystem.services.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,14 +19,14 @@ public class AppointmentServiceImpl implements AppointmentService {
     private AppointmentRepo appointmentRepo;
 
     @Autowired
-    private DoctorRepo doctorRepo;
+    private StaffRepo staffRepo;
 
     @Autowired
     private PatientRepo patientRepo;
     @Override
     public AppointmentDto createAppointment(AppointmentDto appointmentDto) {
-        Appointment appointment = AppointmentMapper.INSTANCE.toEntityWithMapping(appointmentDto, doctorRepo, patientRepo);
-        return AppointmentMapper.INSTANCE.toDtoWithMapping(appointmentRepo.save(appointment), doctorRepo, patientRepo);
+        Appointment appointment = AppointmentMapper.INSTANCE.toEntityWithMapping(appointmentDto, staffRepo, patientRepo);
+        return AppointmentMapper.INSTANCE.toDtoWithMapping(appointmentRepo.save(appointment), staffRepo, patientRepo);
     }
 
     @Override
@@ -39,8 +39,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public AppointmentDto updateAppointment(Integer appointmentId, AppointmentDto appointmentDto) {
         if (appointmentRepo.existsById(appointmentId)) {
-            Appointment appointment = AppointmentMapper.INSTANCE.toEntityWithMapping(appointmentDto, doctorRepo, patientRepo);
-            return AppointmentMapper.INSTANCE.toDtoWithMapping(appointmentRepo.save(appointment), doctorRepo, patientRepo);
+            Appointment appointment = AppointmentMapper.INSTANCE.toEntityWithMapping(appointmentDto, staffRepo, patientRepo);
+            return AppointmentMapper.INSTANCE.toDtoWithMapping(appointmentRepo.save(appointment), staffRepo, patientRepo);
         }
         throw new RuntimeException("Appointment not found");
     }

@@ -14,7 +14,7 @@ public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer appointmentId;
-    private Integer doctorId;
+    private Integer staffId;
     private Integer patientId;
     private Date appointmentDate;
     private String status;
