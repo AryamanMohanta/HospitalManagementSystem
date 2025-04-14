@@ -1,35 +1,35 @@
 package com.amhospital.HospitalManagementSystem.Controller;
 
-import com.amhospital.HospitalManagementSystem.DTO.DoctorDto;
-import com.amhospital.HospitalManagementSystem.services.DoctorServices;
+import com.amhospital.HospitalManagementSystem.DTO.StaffDto;
+import com.amhospital.HospitalManagementSystem.services.StaffServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/doctor")
+@RequestMapping("/staff")
 public class DoctorController {
     @Autowired
-    private DoctorServices doctorServices;
+    private StaffServices staffServices;
 
     @PostMapping("/add")
-    public ResponseEntity<DoctorDto> addDoctor(@RequestBody DoctorDto doctorDto) {
-        return ResponseEntity.status(201).body(doctorServices.addDoctor(doctorDto));
+    public ResponseEntity<StaffDto> addDoctor(@RequestBody StaffDto staffDto) {
+        return ResponseEntity.status(201).body(staffServices.addStaff(staffDto));
     }
 
-    @DeleteMapping("/remove/{doctorId}")
-    public ResponseEntity<Boolean> removePatient(@PathVariable Integer doctorId) {
-        return ResponseEntity.ok(doctorServices.removeDoctor(doctorId));
+    @DeleteMapping("/remove/{staffId}")
+    public ResponseEntity<Boolean> removePatient(@PathVariable Integer staffId) {
+        return ResponseEntity.ok(staffServices.removeStaff(staffId));
     }
 
-    @GetMapping("/get/{doctorId}")
-    public ResponseEntity<DoctorDto> getPatient(@PathVariable Integer doctorId) {
-        return ResponseEntity.ok(doctorServices.getDoctor(doctorId));
+    @GetMapping("/get/{staffId}")
+    public ResponseEntity<StaffDto> getPatient(@PathVariable Integer staffId) {
+        return ResponseEntity.ok(staffServices.getStaff(staffId));
     }
 
     @PutMapping("/update")
-    public ResponseEntity<DoctorDto> updateDoctor(@RequestBody DoctorDto doctorDto) {
-        return ResponseEntity.status(201).body(doctorServices.updateDoctor(doctorDto));
+    public ResponseEntity<StaffDto> updateDoctor(@RequestBody StaffDto staffDto) {
+        return ResponseEntity.status(201).body(staffServices.updateStaff(staffDto));
     }
 
 
