@@ -37,8 +37,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public AppointmentDto updateAppointment(Integer appointmentId, AppointmentDto appointmentDto) {
-        if (appointmentRepo.existsById(appointmentId)) {
+    public AppointmentDto updateAppointment(AppointmentDto appointmentDto) {
+        if (appointmentRepo.existsById(appointmentDto.getAppointmentId())) {
             Appointment appointment = AppointmentMapper.INSTANCE.toEntityWithMapping(appointmentDto, staffRepo, patientRepo);
             return AppointmentMapper.INSTANCE.toDtoWithMapping(appointmentRepo.save(appointment), staffRepo, patientRepo);
         }
@@ -46,9 +46,10 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void deleteAppointment(Integer appointmentId) {
+    public Boolean deleteAppointment(Integer appointmentId) {
         if (appointmentRepo.existsById(appointmentId)) {
             appointmentRepo.deleteById(appointmentId);
+            return true;
         } else {
             throw new RuntimeException("Appointment not found");
         }

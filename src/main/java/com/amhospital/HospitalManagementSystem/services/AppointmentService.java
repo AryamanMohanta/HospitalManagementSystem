@@ -9,9 +9,9 @@ public interface AppointmentService {
 
     AppointmentDto getAppointmentById(Integer appointmentId);
 
-    AppointmentDto updateAppointment(Integer appointmentId, AppointmentDto appointmentDto);
+    AppointmentDto updateAppointment(AppointmentDto appointmentDto);
 
-    void deleteAppointment(Integer appointmentId);
+    Boolean deleteAppointment(Integer appointmentId);
 
     List<AppointmentDto> getAllAppointments();
 }
