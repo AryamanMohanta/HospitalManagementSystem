@@ -1,9 +1,10 @@
-package com.amhospital.HospitalManagementSystem.services;
+package com.amhospital.HospitalManagementSystem.services.serviceImpl;
 
 import com.amhospital.HospitalManagementSystem.Config.PatientMapper;
 import com.amhospital.HospitalManagementSystem.DTO.PatientDto;
 import com.amhospital.HospitalManagementSystem.model.Patient;
 import com.amhospital.HospitalManagementSystem.repositories.PatientRepo;
+import com.amhospital.HospitalManagementSystem.services.PatientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

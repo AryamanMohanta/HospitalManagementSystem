@@ -10,6 +10,6 @@ import java.util.function.Function;
 
 @Repository
 public interface PatientRepo extends JpaRepository<Patient , Integer > {
-    Patient findByName(String name);
+    Optional<Patient> findByName(String name);
     Patient findByPatientId(Integer Id);
 }

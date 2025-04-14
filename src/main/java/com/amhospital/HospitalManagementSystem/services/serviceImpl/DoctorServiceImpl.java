@@ -1,14 +1,15 @@
-package com.amhospital.HospitalManagementSystem.services;
+package com.amhospital.HospitalManagementSystem.services.serviceImpl;
 
 import com.amhospital.HospitalManagementSystem.Config.DoctorMapper;
 import com.amhospital.HospitalManagementSystem.DTO.DoctorDto;
 import com.amhospital.HospitalManagementSystem.model.Doctor;
 import com.amhospital.HospitalManagementSystem.repositories.DoctorRepo;
+import com.amhospital.HospitalManagementSystem.services.DoctorServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DoctorServiceImpl implements DoctorServices{
+public class DoctorServiceImpl implements DoctorServices {
 
     @Autowired
     private DoctorRepo doctorRepo;
@@ -36,7 +37,7 @@ public class DoctorServiceImpl implements DoctorServices{
 
     @Override
     public DoctorDto updateDoctor(DoctorDto doctorDto) {
-        if (doctorRepo.existsById(doctorDto.getDoctor_id())){
+        if (doctorRepo.existsById(doctorDto.getDoctorId())){
             Doctor doctor = DoctorMapper.INSTANCE.toEntity(doctorDto);
             return DoctorMapper.INSTANCE.toDto(doctorRepo.save(doctor));
         }

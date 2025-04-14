@@ -10,10 +10,10 @@ import org.mapstruct.factory.Mappers;
 public interface DoctorMapper {
     DoctorMapper INSTANCE = Mappers.getMapper(DoctorMapper.class);
 
-    @Mapping(target = "doctor_id", ignore = false)
+    @Mapping(target = "doctorId", ignore = false)
     Doctor toEntity(DoctorDto doctorDto);
 
-    @Mapping(target = "doctor_id", ignore = false)
+    @Mapping(target = "doctorId", ignore = false)
     DoctorDto toDto(Doctor doctor);
 
 }

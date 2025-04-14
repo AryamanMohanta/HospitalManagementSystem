@@ -12,7 +12,7 @@ import java.util.Map;
 public class Doctor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer doctor_id;
+    Integer doctorId;
     String name;
     String specialisation;
     Integer experience;
@@ -21,7 +21,7 @@ public class Doctor {
     String gender;
     @ElementCollection
             @CollectionTable(name = "doctor_availability" , joinColumns =
-            @JoinColumn(name="doctor_id"))
+            @JoinColumn(name="doctorId"))
             @MapKeyColumn(name="slot")
             @Column(name = "is_available")
     Map<String , Boolean> availability = new HashMap<>();
