@@ -33,4 +33,9 @@ public class MedicineController {
         return ResponseEntity.ok(medicineService.getMedicine(medicineId));
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<MedicineDto> updateMedicine(@RequestBody MedicineDto medicineDto) {
+        return ResponseEntity.status(200).body(medicineService.updateMedicine(medicineDto));
+    }
+
 }

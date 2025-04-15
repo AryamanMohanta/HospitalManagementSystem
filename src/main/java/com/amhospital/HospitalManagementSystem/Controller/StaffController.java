@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/staff")
-public class DoctorController {
+public class StaffController {
     @Autowired
     private StaffServices staffServices;
 
