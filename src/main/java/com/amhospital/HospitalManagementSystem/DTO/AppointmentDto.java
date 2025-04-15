@@ -8,7 +8,7 @@ import java.util.Date;
 public class AppointmentDto {
     private Integer appointmentId;
 
-    private String staffName;
+    private String doctorName;
     private String patientName;
     private Date appointmentDate;
     private String status;

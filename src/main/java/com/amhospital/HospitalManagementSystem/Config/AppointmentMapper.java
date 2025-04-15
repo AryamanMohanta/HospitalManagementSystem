@@ -18,13 +18,13 @@ import org.mapstruct.Mapper;
         @Mapping(target = "patientId", ignore = true)
         Appointment toEntity(AppointmentDto appointmentDto);
 
-        @Mapping(target = "staffName", ignore = true)
+        @Mapping(target = "doctorName", ignore = true)
         @Mapping(target = "patientName", ignore = true)
         AppointmentDto toDto(Appointment appointment);
 
         default Appointment toEntityWithMapping(AppointmentDto appointmentDto, StaffRepo staffRepo, PatientRepo patientRepo) {
             Appointment appointment = toEntity(appointmentDto);
-            Staff staff = staffRepo.findByName(appointmentDto.getStaffName())
+            Staff staff = staffRepo.findByName(appointmentDto.getDoctorName())
                     .orElseThrow(() -> new RuntimeException("Doctor not found"));
             Patient patient = patientRepo.findByName(appointmentDto.getPatientName())
                     .orElseThrow(() -> new RuntimeException("Patient not found"));
@@ -39,7 +39,7 @@ import org.mapstruct.Mapper;
                     .orElseThrow(() -> new RuntimeException("Doctor not found"));
             Patient patient = patientRepo.findById(appointment.getPatientId())
                     .orElseThrow(() -> new RuntimeException("Patient not found"));
-            appointmentDto.setStaffName(staff.getName());
+            appointmentDto.setDoctorName(staff.getName());
             appointmentDto.setPatientName(patient.getName());
             return appointmentDto;
         }
